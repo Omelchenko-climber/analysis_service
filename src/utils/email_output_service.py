@@ -6,7 +6,7 @@ class EmailOutput:
     smtp_server = 'smtp.gmail.com'
 
     @staticmethod
-    def email_output(info:str, sender_email: str, receiver_email: str, password: str) -> None:
+    def email_output(info: str, sender_email: str, sender_password: str, receiver_email: str) -> None:
 
         # sender_email = 'racoon.rocket.email@gmail.com'
         # receiver_email = 'omelchenko230783@gmail.com'
@@ -20,7 +20,7 @@ class EmailOutput:
         context = ssl.create_default_context()
         with smtplib.SMTP_SSL(EmailOutput.smtp_server, EmailOutput.port, context=context) as server:
             try:
-                server.login(sender_email, password)
+                server.login(sender_email, sender_password)
                 server.sendmail(sender_email, receiver_email, message)
                 print('Message sent successfully!')
             except Exception as e:

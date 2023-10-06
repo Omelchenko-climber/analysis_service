@@ -1,9 +1,10 @@
-from setuptools import find_packages
+from setuptools import setup, find_packages
 
 setup(
     name="analysis_service",
     version="1.0.0",
-    description="My Python Project",
+    description="This service can analyse folders with logs.",
+    url='https://github.com/Omelchenko-climber/analysis_service',
     author="Anton Omelchenko",
     author_email="omelchenko230783@gmail.com",
     license="MIT",
@@ -13,5 +14,10 @@ setup(
             "analysis_service=src:main"
         ]
     },
-    install_requires = ['markdown']
+    classifiers=[
+        'Programming Language :: Python :: 3.11',
+        'License :: OSI Approved :: MIT License',
+        'Operating System :: OS Independent'
+    ],
+    install_requires=['markdown']
 )

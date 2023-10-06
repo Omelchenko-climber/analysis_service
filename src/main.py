@@ -1,12 +1,38 @@
-from utils import NotifyService
-from utils import ErrorAnalyseService, email_output_service, telegrambot_output_service
+from utils import ErrorAnalyseService, NotifyService, EmailOutput, ConsoleOutput, TelegrambotOutput
 
-logs_str = 'C:/Users/User/PycharmProjects/Utils/test_log_folder/'
+logs_str = 'C:/Users/User/PycharmProjects/Utils/tests/test_log_folder/'
 
-test = ErrorAnalyseService()
-files = test.parse_files(logs_str, True)
-info_to_send = NotifyService.get_file_info(files)
-# print(NotifyService.get_file_info(files))
-# print(NotifyService.get_total_info(files))
-# email_output_service.EmailOutput.email_output(info_to_send)
-# telegrambot_output_service.TelegrambotOutput.telegrambot_output(info_to_send)
+
+def main():
+    path_to_folder: str = input('Enter the full path to your folder with logs: ')
+    recursive_search = input('Do you want to search recursively? y/n: ')
+
+    recursive_search = True if recursive_search == 'y' else False
+
+    analysis_folder = ErrorAnalyseService()
+    list_of_files = analysis_folder.parse_files(path_to_folder, recursive_search)
+
+    info_output_option = input('Do you want to get info about logs separately or in general? s/g: ')
+
+    if info_output_option == 's':
+        analysis_result = NotifyService.get_file_info(list_of_files)
+    else:
+        analysis_result = NotifyService.get_total_info(list_of_files)
+
+    get_result: str = input('How do you want to get the result? (email, telegrambot, console): ')
+
+    if get_result == 'email':
+        sender_email = input('Enter sender email address: ')
+        app_password = input('Enter your password or app password: ')
+        reciever_email = input('Enter receiver email address: ')
+        EmailOutput.email_output(analysis_result, sender_email, app_password, reciever_email)
+    elif get_result == 'telegrambot':
+        bot_token = input('Enter token from your bot: ')
+        chat_id = input('Enter chat or group chat id: ')
+        TelegrambotOutput.telegrambot_output(analysis_result, bot_token, chat_id)
+    elif get_result == 'console':
+        ConsoleOutput.console_output(analysis_result)
+
+
+if __name__ == '__main__':
+    main()
