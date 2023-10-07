@@ -1,4 +1,4 @@
-from setuptools import setup, find_packages
+from setuptools import setup, find_namespace_packages
 
 setup(
     name="analysis_service",
@@ -8,7 +8,6 @@ setup(
     author="Anton Omelchenko",
     author_email="omelchenko230783@gmail.com",
     license="MIT",
-    packages=find_packages(where="src"),
     entry_points={
         "console_scripts": [
             "analysis_service=src:main"

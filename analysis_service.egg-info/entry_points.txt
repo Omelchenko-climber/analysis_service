@@ -1,0 +1,2 @@
+[console_scripts]
+analysis_service = src:main
