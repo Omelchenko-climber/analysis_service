@@ -6,7 +6,7 @@ def check_input(var: str, example: list) -> str:
         var = input('Please, check your input and try again: ')
     return var
 
-def run():
+def main():
     path_to_folder: str = input('Enter the full path to your folder with logs: ')
     recursive_search = input('Do you want to search recursively? y/n: ')
     recursive_search = check_input(recursive_search, ['y', 'n'])
@@ -25,7 +25,7 @@ def run():
         analysis_result = NotifyService.get_total_info(list_of_files)
 
     get_result: str = input('How do you want to get the result? (email, telegrambot, console): ')
-    get_result = check_input(get_result, ['email', 'telegrambot', 'console'])
+    get_result = check_input(get_result, ['email', 'telegrambot'])
 
     if get_result == 'email':
         sender_email = input('Enter sender email address: ')
@@ -41,4 +41,4 @@ def run():
 
 
 if __name__ == '__main__':
-    run()
+    main()
