@@ -1,18 +1,23 @@
 from utils import ErrorAnalyseService, NotifyService, EmailOutput, ConsoleOutput, TelegrambotOutput
 
-logs_str = 'C:/Users/User/PycharmProjects/Utils/tests/test_log_folder/'
 
+def check_input(var: str, example: list) -> str:
+    while var not in example:
+        var = input('Please, check your input and try again: ')
+    return var
 
 def main():
     path_to_folder: str = input('Enter the full path to your folder with logs: ')
     recursive_search = input('Do you want to search recursively? y/n: ')
+    recursive_search = check_input(recursive_search, ['y', 'n'])
 
     recursive_search = True if recursive_search == 'y' else False
 
+    info_output_option = input('Do you want to get info about logs separately or in general? s/g: ')
+    info_output_option = check_input(info_output_option, ['s', 'g'])
+
     analysis_folder = ErrorAnalyseService()
     list_of_files = analysis_folder.parse_files(path_to_folder, recursive_search)
-
-    info_output_option = input('Do you want to get info about logs separately or in general? s/g: ')
 
     if info_output_option == 's':
         analysis_result = NotifyService.get_file_info(list_of_files)
@@ -20,6 +25,7 @@ def main():
         analysis_result = NotifyService.get_total_info(list_of_files)
 
     get_result: str = input('How do you want to get the result? (email, telegrambot, console): ')
+    get_result = check_input(get_result, ['email', 'telegrambot'])
 
     if get_result == 'email':
         sender_email = input('Enter sender email address: ')
