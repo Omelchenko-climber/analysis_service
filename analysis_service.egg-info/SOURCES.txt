@@ -6,7 +6,6 @@ analysis_service.egg-info/dependency_links.txt
 analysis_service.egg-info/entry_points.txt
 analysis_service.egg-info/requires.txt
 analysis_service.egg-info/top_level.txt
-src/__init__.py
 src/main.py
 src/data/__init__.py
 src/data/dto.py
@@ -16,7 +15,3 @@ src/utils/console_output_service.py
 src/utils/email_output_service.py
 src/utils/notify_service.py
 src/utils/telegrambot_output_service.py
-tests/test_console.py
-tests/test_email.py
-tests/test_telegrambot.py
-venv/__init__.py

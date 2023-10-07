@@ -1,12 +1,16 @@
-from setuptools import setup, find_packages
+from setuptools import setup
 
 setup(
     name="analysis_service",
-    version="2.0.0",
+    version="2.1.0",
     description="This service can analyse folders with logs.",
     url='https://github.com/Omelchenko-climber/analysis_service',
     author="Anton Omelchenko",
-    packages=find_packages(),
+    packages=[
+        'src',
+        'src.data',
+        'src.utils',
+    ],
     install_requires=[
         'certifi>=2023.7',
         'charset-normalizer>=3.3',

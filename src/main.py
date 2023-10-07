@@ -1,4 +1,4 @@
-from utils import ErrorAnalyseService, NotifyService, EmailOutput, ConsoleOutput, TelegrambotOutput
+from src.utils import ErrorAnalyseService, NotifyService, EmailOutput, ConsoleOutput, TelegrambotOutput
 
 
 def check_input(var: str, example: list) -> str:
