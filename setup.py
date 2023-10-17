@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name="analysis_service",
-    version="2.1.0",
+    version="2.3.0",
     description="This service can analyse folders with logs.",
     url='https://github.com/Omelchenko-climber/analysis_service',
     author="Anton Omelchenko",
