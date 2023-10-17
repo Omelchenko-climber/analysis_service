@@ -1,5 +1,8 @@
-from src.utils  import ConsoleOutput, NotifyService, ErrorAnalyseService
-from test_data import TEST_PATH
+import os
+
+from src.utils import ConsoleOutput, NotifyService, ErrorAnalyseService
+
+TEST_PATH = os.environ.get('TEST_PATH')
 
 analyzer = ErrorAnalyseService()
 

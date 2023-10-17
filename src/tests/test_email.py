@@ -1,5 +1,10 @@
+import os
+
 from src.utils import ErrorAnalyseService, NotifyService, EmailOutput
-from test_data import SENDER_EMAIL, APP_PASSWORD, TEST_PATH
+
+TEST_PATH = os.environ.get('TEST_PATH')
+SENDER_EMAIL = os.environ.get('SENDER_EMAIL')
+APP_PASSWORD = os.environ.get('APP_PASSWORD')
 
 analyzer = ErrorAnalyseService()
 list_of_files = analyzer.parse_files(TEST_PATH)
